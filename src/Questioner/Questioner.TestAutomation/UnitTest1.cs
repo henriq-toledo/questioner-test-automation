@@ -1,4 +1,5 @@
 using System;
+using OpenQA.Selenium.Firefox;
 using Questioner.TestAutomation.Framework.Classes.Settings;
 using Xunit;
 
@@ -9,7 +10,10 @@ namespace Questioner.TestAutomation
         [Fact]
         public void Test1()
         {
-            var a = TestSettings.WebAppUrl;
+            using(var webDriver = new FirefoxDriver())
+            {                
+                webDriver.Navigate().GoToUrl(TestSettings.WebAppUrl);
+            }
         }
     }
 }
