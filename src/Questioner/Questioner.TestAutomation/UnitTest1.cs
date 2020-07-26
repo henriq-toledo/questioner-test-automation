@@ -1,5 +1,4 @@
-using Questioner.TestAutomation.Framework.Drivers;
-using Questioner.TestAutomation.Framework.Settings;
+using Questioner.TestAutomation.Framework.Screens;
 using Xunit;
 
 namespace Questioner.TestAutomation
@@ -9,7 +8,7 @@ namespace Questioner.TestAutomation
         [Fact]
         public void Test1()
         {
-            WebDriver.Driver.Navigate().GoToUrl(TestSettings.WebAppUrl);
+            HomeScreen.Go();
         }
     }
 }
