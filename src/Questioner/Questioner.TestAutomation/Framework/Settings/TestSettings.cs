@@ -19,7 +19,7 @@ namespace Questioner.TestAutomation.Framework.Settings
             var testSettings = configuration.GetSection(nameof(TestSettings));
 
             WebAppUrl = testSettings[nameof(WebAppUrl)];
-            Browser = testSettings[nameof(WebAppUrl)];
+            Browser = testSettings[nameof(Browser)];
         }
     }
 }
