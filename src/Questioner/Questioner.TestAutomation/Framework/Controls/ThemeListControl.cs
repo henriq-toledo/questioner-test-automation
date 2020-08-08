@@ -30,7 +30,7 @@ namespace Questioner.TestAutomation.Framework.Controls
                 var model = new ThemeListItemControl<TScreen>();
 
                 model.Index = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 1));
-                model.Name = Label<TScreen, string>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 2));
+                model.Name = Link<TScreen, string, ThemeScreen>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 2));
                 model.Topics = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 3));
                 model.Questions = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 4));
 
@@ -47,5 +47,7 @@ namespace Questioner.TestAutomation.Framework.Controls
 
             return Screen;
         }
+
+        public ThemeListItemControl<TScreen> this[int index] => Items[index];
     }
 }

@@ -4,6 +4,8 @@ namespace Questioner.TestAutomation.Framework.Screens
 {
     public abstract class BaseScreen
     {
+        public BaseScreen() { }
+
         public BaseScreen(string url)
             => WebDriver.Driver.Navigate().GoToUrl(url);
     }
