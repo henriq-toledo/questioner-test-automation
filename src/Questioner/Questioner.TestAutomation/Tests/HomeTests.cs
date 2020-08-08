@@ -14,11 +14,14 @@ namespace Questioner.TestAutomation.Tests
             // Act
             HomeScreen
                 .Go()
-                .Themes.GetValue(out var list)
-                .Themes[0].Name.Click();
+                .Themes.GetValue(out var themes)
+                .Themes[0].Name.Click()
+                .Topics.GetValue(out var topics)
+                .StartButton.Click();
 
             // Assert
-            Assert.Equal(expected: 2, actual: list.Count);
+            Assert.Equal(expected: 2, actual: themes.Count);
+            Assert.Equal(expected: 4, actual: topics.Count);
 
             // var item = list.FirstOrDefault();
             // item.Index.GetValue(out var index);
