@@ -2,12 +2,11 @@ using Questioner.TestAutomation.Framework.Screens;
 
 namespace Questioner.TestAutomation.Framework.Controls
 {
-    public class ThemeListItemControl<TScreen>
-        where TScreen : HomeScreen
+    public class ThemeListItemControl
     {
-        public Label<TScreen, int> Index { get; set; }
-        public Link<TScreen, string, ThemeScreen> Name { get; set; }
-        public Label<TScreen, int> Topics { get; set; }
-        public Label<TScreen, int> Questions { get; set; }
+        public Label<HomeScreen, int> Index { get; set; }
+        public Link<HomeScreen, string, ThemeScreen> Name { get; set; }
+        public Label<HomeScreen, int> Topics { get; set; }
+        public Label<HomeScreen, int> Questions { get; set; }
     }
 }

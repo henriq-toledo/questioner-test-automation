@@ -5,12 +5,11 @@ using Questioner.TestAutomation.Framework.Screens;
 
 namespace Questioner.TestAutomation.Framework.Controls
 {
-    public class ThemeListControl<TScreen> : BaseControl<TScreen>, IGetter<TScreen, List<ThemeListItemControl<TScreen>>>
-        where TScreen : HomeScreen
+    public class ThemeListControl : BaseControl<HomeScreen>, IGetter<HomeScreen, List<ThemeListItemControl>>
     {
-        protected List<ThemeListItemControl<TScreen>> Items { get; set; }
+        protected List<ThemeListItemControl> Items { get; set; }
 
-        protected ThemeListControl(TScreen screen, string identifier, IdentifierType identifierType)
+        protected ThemeListControl(HomeScreen screen, string identifier, IdentifierType identifierType)
             : base(screen, identifier, identifierType)
         {
             InitializeItems();
@@ -18,7 +17,7 @@ namespace Questioner.TestAutomation.Framework.Controls
 
         private void InitializeItems()
         {
-            Items = new List<ThemeListItemControl<TScreen>>();
+            Items = new List<ThemeListItemControl>();
 
             var body = Control.FindElement(By.TagName("tbody"));
             var lines = body.FindElements(By.TagName("tr"));
@@ -27,27 +26,27 @@ namespace Questioner.TestAutomation.Framework.Controls
 
             for (int lineIndex = 1; lineIndex <= lines.Count; lineIndex++)
             {
-                var model = new ThemeListItemControl<TScreen>();
+                var model = new ThemeListItemControl();
 
-                model.Index = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 1));
-                model.Name = Link<TScreen, string, ThemeScreen>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 2));
-                model.Topics = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 3));
-                model.Questions = Label<TScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 4));
+                model.Index = Label<HomeScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 1));
+                model.Name = Link<HomeScreen, string, ThemeScreen>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 2));
+                model.Topics = Label<HomeScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 3));
+                model.Questions = Label<HomeScreen, int>.CreateByXPath(Screen, string.Format(lineXPath, lineIndex, 4));
 
                 Items.Add(model);
             }
         }
 
-        public static ThemeListControl<TScreen> CreateByXPath(TScreen screen, string xPath)
-           => new ThemeListControl<TScreen>(screen, xPath, IdentifierType.XPath);
+        public static ThemeListControl CreateByXPath(HomeScreen screen, string xPath)
+           => new ThemeListControl(screen, xPath, IdentifierType.XPath);
 
-        public TScreen GetValue(out List<ThemeListItemControl<TScreen>> value)
+        public HomeScreen GetValue(out List<ThemeListItemControl> value)
         {
             value = Items;
 
             return Screen;
         }
 
-        public ThemeListItemControl<TScreen> this[int index] => Items[index];
+        public ThemeListItemControl this[int index] => Items[index];
     }
 }
